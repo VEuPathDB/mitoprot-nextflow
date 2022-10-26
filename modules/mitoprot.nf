@@ -7,8 +7,8 @@ process runMitoprot {
     path 'subset.fa'
 
   output:
-    path 'summary'
-    path 'subset.mitoprot'
+    path 'summary', emit: summary
+    path 'subset.mitoprot', emit: subset
 
   script:
     template 'runMitoprot.bash'
@@ -21,8 +21,7 @@ workflow mitoprot {
 
   main:
     results = runMitoprot(seqs)
-    results[0] \
-      | collectFile( storeDir: params.outputDir )
-    results[1] \
-      | collectFile( storeDir: params.outputDir, name: params.outputFileName )
+    results.summary | collectFile( storeDir: params.outputDir )
+    results.subset  | collectFile( storeDir: params.outputDir, name: params.outputFileName )
+    
 }

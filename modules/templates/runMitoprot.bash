@@ -3,4 +3,4 @@
 set -euo pipefail
 mitoprot \
     -f $params.formatType \
-    -o summary subset.fa
+    -o summary $subsetFasta

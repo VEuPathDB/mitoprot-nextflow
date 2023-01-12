@@ -4,11 +4,11 @@ nextflow.enable.dsl=2
 
 process runMitoprot {
   input:
-    path 'subset.fa'
+    path subsetFasta
 
   output:
     path 'summary', emit: summary
-    path 'subset.mitoprot', emit: subset
+    path '*.mitoprot', emit: subset
 
   script:
     template 'runMitoprot.bash'

@@ -3,7 +3,7 @@ nextflow.enable.dsl=2
 
 
 process runMitoprot {
-  container= 'veupathdb/mitoprot:1.0.0'
+  container 'veupathdb/mitoprot:1.0.0'
   
   input:
     path subsetFasta
